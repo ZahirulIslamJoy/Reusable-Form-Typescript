@@ -1,6 +1,7 @@
 import {FieldValues, useForm} from "react-hook-form"
 import { z } from "zod";
 import {zodResolver} from "@hookform/resolvers/zod"
+
 const NormalForm = () => {
   const double = true;
   const signUpSchema=z.object({
@@ -15,9 +16,11 @@ const NormalForm = () => {
   const {register, handleSubmit, formState: { errors },}=useForm<TForm>({
     resolver:zodResolver(signUpSchema)
   });
+
   const onSubmit=(data:FieldValues)=>{
     console.log(data);
   }
+  console.log(handleSubmit(onSubmit));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}
